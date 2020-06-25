@@ -177,7 +177,7 @@
       "array": [
         0,
         0,
-        341.9829342512069,
+        1108.5125168440816,
         0,
         0,
         0,
@@ -493,7 +493,7 @@
   {
     "__type__": "cc.Node",
     "_name": "Background",
-    "_objFlags": 512,
+    "_objFlags": 0,
     "_parent": {
       "__id__": 9
     },
@@ -543,7 +543,7 @@
         1,
         1,
         1,
-        0
+        1
       ]
     },
     "_eulerAngles": {
@@ -562,7 +562,7 @@
   {
     "__type__": "cc.Node",
     "_name": "Label",
-    "_objFlags": 512,
+    "_objFlags": 0,
     "_parent": {
       "__id__": 10
     },

@@ -189,7 +189,7 @@
       "array": [
         0,
         0,
-        341.9829342512069,
+        1108.5125168440816,
         0,
         0,
         0,
@@ -1188,7 +1188,7 @@
       "__id__": 2
     },
     "component": "",
-    "_componentId": "056baYDE0VGkpAKX2ZuwRjd",
+    "_componentId": "560c1m87pxBmIbMcQw//AD0",
     "handler": "clickBtn_main",
     "customEventData": "gameStart"
   },
@@ -1572,7 +1572,7 @@
       "__id__": 2
     },
     "component": "",
-    "_componentId": "056baYDE0VGkpAKX2ZuwRjd",
+    "_componentId": "560c1m87pxBmIbMcQw//AD0",
     "handler": "clickBtn_main",
     "customEventData": "glory"
   },
@@ -1594,7 +1594,7 @@
     "_id": "aaZmXJE7FNnrsH2qe+fpbj"
   },
   {
-    "__type__": "056baYDE0VGkpAKX2ZuwRjd",
+    "__type__": "560c1m87pxBmIbMcQw//AD0",
     "_name": "",
     "_objFlags": 0,
     "node": {
@@ -1607,16 +1607,13 @@
     "bgGlory": {
       "__id__": 31
     },
-    "candy": {
-      "__id__": 16
-    },
     "bgMain": {
       "__id__": 6
     },
     "gloryPanel": {
       "__id__": 35
     },
-    "_id": "8eRGjqLL1B/p1xunQyfWID"
+    "_id": "a2SNoGq8NAn6WVeCo1rJPY"
   },
   {
     "__type__": "cc.Sprite",
@@ -2003,7 +2000,7 @@
       "__id__": 2
     },
     "component": "",
-    "_componentId": "056baYDE0VGkpAKX2ZuwRjd",
+    "_componentId": "560c1m87pxBmIbMcQw//AD0",
     "handler": "clickBtn_main",
     "customEventData": "gloryClose"
   },
