@@ -1,4 +1,24 @@
 var modeData = require('modeData');
+var post=function (url, data, callback){
+    //创建异步对象
+    var xhr = new XMLHttpRequest();
+    //设置请求行
+    xhr.open('post',url);
+    //设置请求头(post有数据发送才需要设置请求头)
+    //判断是否有数据发送
+    if(data){
+          xhr.setRequestHeader('content-type','application/x-www-form-urlencoded');
+    }
+    //注册回调函数
+    xhr.onreadystatechange = function(){
+          if(xhr.readyState==4&&xhr.status==200){
+              //调用传递的回调函数
+              callback(xhr.responseText);
+          }
+    }
+    //发送请求主体
+    xhr.send(data);
+};
 cc.Class({
     extends: cc.Component,
 
@@ -20,6 +40,13 @@ cc.Class({
 
     start () {
         if(modeData.mode==3){//关卡3
+            
+            if(modeData.timeCount==0){
+                cc.log('hashasha');
+                this.feetbackLabel.getComponent(cc.Label).string='很遗憾,你没有在规定时间内完成！';
+                modeData.score1=modeData.score2=0;
+                return;
+            }
             var score=Math.floor(modeData.score1+modeData.score2);
             if(score==3){
                 this.feetbackLabel.getComponent(cc.Label).string='恭喜你全部答对,再接再厉！';
@@ -74,6 +101,12 @@ cc.Class({
         
         if(modeData.mode==3){
             var score=Math.floor(modeData.score1+modeData.score2);
+            post('http://'+modeData.ip+':8080/miniGame/gloryUpd','mode='+modeData.mode+'&score='+score+'&openId='+modeData.openId,
+                function(res){
+
+                }
+            );
+
             for(var i=0;i<score;i++){
                 cc.log(this.trophy[i].node.getComponent(cc.Sprite).spriteFrame);
                 cc.tween(this.trophy[i].node).to(0,{opacity:0}).to(1.5,{opacity:255}).start();
@@ -84,7 +117,13 @@ cc.Class({
             modeData.correctOpt2=[];
             modeData.score1=null;
             modeData.score2=null;
+            modeData.timeCount=60;
         }else{
+            post('http://'+modeData.ip+':8080/miniGame/gloryUpd','mode='+modeData.mode+'&score='+modeData.correctArray.length+'&openId='+modeData.openId,
+                function(res){
+
+                }
+            );
             for(var i=0;i<modeData.correctArray.length;i++){
                 cc.log(this.trophy[i].node.getComponent(cc.Sprite).spriteFrame);
                 cc.tween(this.trophy[i].node).to(0,{opacity:0}).to(1.5,{opacity:255}).start();

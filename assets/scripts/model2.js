@@ -1,6 +1,6 @@
 var modeData = require('modeData');
 var correct=null;
-var post=function post(url, data, callback){
+var post=function (url, data, callback){
     //创建异步对象
     var xhr = new XMLHttpRequest();
     //设置请求行
@@ -34,8 +34,8 @@ cc.Class({
 
     },
     start () {
-        var ip='http://localhost:8080/miniGame/mode2';
-        var param='mode='+modeData.mode+'&difficulty='+modeData.difficulty;
+        var ip='http://'+modeData.ip+':8080/miniGame/mode2';
+        var param='mode='+modeData.mode+'&difficulty='+modeData.difficulty+'&openId='+modeData.openId;
         var obj=this;
         post(ip,param,
             function(res){

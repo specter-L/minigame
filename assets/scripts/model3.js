@@ -1,6 +1,6 @@
 var modeData = require('modeData');
 var state;
-var post=function post(url, data, callback){
+var post=function (url, data, callback){
     //创建异步对象
     var xhr = new XMLHttpRequest();
     //设置请求行
@@ -28,7 +28,8 @@ cc.Class({
             default:[],
             type:[cc.Label]
         },
-        problem:cc.Label
+        problem:cc.Label,
+        clockTime:cc.Label
     },
 
     onLoad () {
@@ -36,9 +37,24 @@ cc.Class({
     },
 
     start () {
-        var ip='http://localhost:8080/miniGame/mode3';
-        var param='mode='+modeData.mode+'&difficulty='+modeData.difficulty+'&state='+state;
+        
         var obj=this;
+
+        this.callback = function () {
+            obj.clockTime.string=modeData.timeCount+' s';
+            if (modeData.timeCount == 0) {
+                
+                this.unschedule(obj.callback);
+                cc.director.loadScene("gameover");
+                return;
+            }
+            modeData.timeCount--;
+        }
+        this.clockTime.schedule(this.callback, 1);
+
+        var ip='http://'+modeData.ip+':8080/miniGame/mode3';
+        var param='mode='+modeData.mode+'&difficulty='+modeData.difficulty+'&state='+state;
+        
         if(state==0){
             post(ip,param,
                 function(res){
@@ -121,6 +137,9 @@ cc.Class({
                 }
             }
             cc.log('多少个黑的：'+playerChoiceNum);
+            if(playerChoiceNum==0){
+                return;
+            }
             if(playerChoiceNum<correctOpt.length&&score==null){
                 score=1;
             }else if(playerChoiceNum==correctOpt.length&&score==null){
@@ -139,9 +158,10 @@ cc.Class({
                 for(var i=0;i<this.choice.length;i++){
                     this.choice[i].node.color=new cc.Color(255,255,255,255);
                 }
+                this.clockTime.unschedule(this.callback);
                 this.start();
             }else if(state==1){
-                
+                this.clockTime.unschedule(this.callback);
                 cc.director.loadScene("gameover");
             }
         }else{

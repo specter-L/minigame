@@ -201,7 +201,7 @@
       "array": [
         0,
         0,
-        341.9829342512069,
+        303.8624495959746,
         0,
         0,
         0,
@@ -568,8 +568,8 @@
       }
     ],
     "_useOriginalSize": false,
-    "_string": "60 s",
-    "_N$string": "60 s",
+    "_string": "",
+    "_N$string": "",
     "_fontSize": 50,
     "_lineHeight": 50,
     "_enableWrapText": true,
@@ -3708,6 +3708,9 @@
     ],
     "problem": {
       "__id__": 18
+    },
+    "clockTime": {
+      "__id__": 10
     },
     "_id": "7aZ7TDWWlL9JhVkUml9FTX"
   }
